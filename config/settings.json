@@ -1,0 +1,11 @@
+{
+  "video_style": "realistic",
+  "language": "Hindi",
+  "audience": "India",
+  "format": "9:16",
+  "duration_seconds": "10-15",
+  "daily_generation": true,
+  "auto_publish": false,
+  "publishing_requires_meta_graph_api": true,
+  "video_generation_requires_provider": true
+}
