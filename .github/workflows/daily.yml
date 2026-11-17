@@ -1,21 +1,33 @@
-
 name: Baby Reels AutoPilot
 
 on:
   workflow_dispatch:
   schedule:
+    # Daily at 09:00 India time (03:30 UTC)
     - cron: "30 3 * * *"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  test:
+  prepare-reel:
     runs-on: ubuntu-latest
     steps:
-      - name: Start AutoPilot
-        run: echo "Baby Reels AutoPilot started!"
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - name: Show schedule
-        run: echo "Ready for AI video automation"
-        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Prepare realistic Indian baby Reel brief
+        run: python scripts/prepare_reel.py
+
+      - name: Save generated brief
+        uses: actions/upload-artifact@v4
+        with:
+          name: baby-reel-brief
+          path: output/
+          if-no-files-found: error
+          retention-days: 14
