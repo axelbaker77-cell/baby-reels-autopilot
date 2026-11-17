@@ -1,0 +1,21 @@
+
+name: Baby Reels AutoPilot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 3 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start AutoPilot
+        run: echo "Baby Reels AutoPilot started!"
+
+      - name: Show schedule
+        run: echo "Ready for AI video automation"
+        
